@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { StoreContext } from '../utils/store';
 import { Link } from "react-router-dom";
-function Home() {
+function Addedit() {
 /**
  * This can be done using redux if we want to keep both the functionalities in different pages 
  * from add form we can update the store 
@@ -12,43 +12,20 @@ function Home() {
         empList: [empList, setEmpList],
       } = React.useContext(StoreContext);
     const [emp, setEmp] = useState({});
-    const deleteEmp = (id) => {
-        if (window.confirm("Delete the item?")) {
-            const updatedEmp = empList.filter((d, i)=> id!=i);
-            setEmpList(updatedEmp);
-        }
-    }
-    const editEmp = (id) => {
-        const newEmpList = [...empList];
-        newEmpList[id] = emp;
-        setEmpList(newEmpList);
-    }
+    
+    
 
     const submit = () => {
         console.log('submit', emp);
         setEmpList([...empList, emp]);
     }
-    const listItems = empList.length > 0 && empList.map((d,i) =>
-        <tr key={i}>
-            <td>{d.fname}</td>
-            <td>{d.lname}</td>
-            <td>{d.dob}</td>
-            <td>{d.designation}</td>
-            <td><img height="50px" width="50px" src={d.photoLink}/></td>
-            <td>{d.experience}</td>
-            <td><button onClick={() => deleteEmp(i)}>Delete</button>
-            <button onClick={() => editEmp(i)}>Edit</button>
-            </td>
-        </tr> 
-    );
+    
     return <>
 
     <Link class="link" to="/">Home</Link>
-
+    
     <Link class="link" to="/addEdit">Add/Edit</Link>
     <table>
-        Add/ Edit (in order to edit update the data in the form and click on edit button in action it will update that row)
-       
         <tr>
          <td>First Name</td>   
         <td><input name='fname' 
@@ -91,19 +68,7 @@ function Home() {
         </tr>
         
     </table>
-    <table>
-        <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>DOB</th>
-    <th>Designation</th>
-    <th>PhotoLink</th>
-    <th>Experience</th>
-    <th>Action</th>
-  </tr>
-        {listItems}
-    </table>
     </>
     ;
   }
-export default Home;
+export default Addedit;

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './component/Home';
+import AddEdit from './component/Addedit';
 
 function App() {   
 
@@ -12,7 +13,7 @@ function App() {
                   <h1 className="text-center" style={style}></h1>
                   <Switch>
                       <Route path="/" exact component={Home} />
-                 
+                      <Route path="/addEdit" exact component={AddEdit} /> 
                   </Switch>
               </div>
           </Router>
